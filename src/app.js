@@ -2,11 +2,13 @@ import morgan from "morgan";
 import express from "express";
 import tareasRoutes from "./router/tareas.routes.js"
 import authRoutes from "./router/auth.routes.js"
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 //Middlewares: convierte los datos que llegan al backend en objectsJS
 app.use(morgan("dev"));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
