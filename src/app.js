@@ -3,11 +3,18 @@ import express from "express";
 import tareasRoutes from "./router/tareas.routes.js"
 import authRoutes from "./router/auth.routes.js"
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 
 //Middlewares: convierte los datos que llegan al backend en objectsJS
 app.use(morgan("dev"));
+app.use(cors(
+    {
+        origin: "http://localhost:5173",
+        credentials: true
+    }
+));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
