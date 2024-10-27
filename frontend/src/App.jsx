@@ -1,4 +1,8 @@
+import Navbar from "./components/navbar/Navbar";
+import { Conteiner } from "./components/ui/Conteiner";
+
 import { Routes, Route } from "react-router-dom";
+
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
@@ -11,6 +15,9 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   return (
+    <>
+    <Navbar/>
+    <Conteiner className="py-5">
     <Routes>
       <Route path="/" element={<HomePage/>} />
       <Route path="/about" element={<AboutPage/>} />
@@ -24,6 +31,8 @@ function App() {
       <Route path="*" element={NotFound} />
 
     </Routes>
+    </Conteiner>
+    </>
   )
 }
 
