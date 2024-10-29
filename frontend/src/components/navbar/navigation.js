@@ -1,19 +1,21 @@
+export const PublicRoutes = [
 
+{
+    name: "About",
+    path: "/about"
+},
+{
+    name: "Login",
+    path: "/login"
+},
+{
+    name: "Registro",
+    path: "/register"
+}
+]
 
-export const navigation = [
+export const PrivateRoutes = [
 
-    {
-        name: "About",
-        path: "/about"
-    },
-    {
-        name: "Login",
-        path: "/login"
-    },
-    {
-        name: "Registro",
-        path: "/register"
-    },
     {
         name: "Tareas",
         path: "/tareas"
