@@ -8,7 +8,7 @@ function TareasFormPage() {
 
   const {register, handleSubmit, formState: {errors}, setValue} = useForm();
   const params = useParams();
-  console.log(params);
+  
   const navigate = useNavigate();
   const {crearTarea, cargarTarea, editarTarea, errors: tareasErrors} = useTareas();
   const onSubmit = handleSubmit(async (data) => {
