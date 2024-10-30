@@ -20,8 +20,12 @@ import NotFound from "./pages/NotFound";
 
 function App() {
 
-  const {isAuth} = useAuth();
+  const {isAuth, loading} = useAuth();
 
+
+if(loading){
+    return <h1>Cargando...</h1>
+}
 
   return (
     <>
@@ -43,7 +47,7 @@ function App() {
 
         <Route path="/tareas" element={<TareasPage/>} />
         <Route path="/tareas/crear" element={<TareasFormPage/>} />
-        <Route path="/tareas/editar/:id" element={<TareasFormPage/>} />
+        <Route path="/tareas/:id/editar" element={<TareasFormPage/>} />
       </Route>
 
     </Route>

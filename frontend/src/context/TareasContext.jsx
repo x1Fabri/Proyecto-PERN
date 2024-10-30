@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from "react";
-import { eliminarTareaRequest, listarTareasRequest, crearTareaRequest } from "../api/tareas.api";
+import { eliminarTareaRequest, listarTareasRequest, crearTareaRequest, listarTareaRequest, actualizarTareaRequest } from "../api/tareas.api";
 
 const TareasContext = createContext();
 
@@ -21,7 +21,11 @@ export const TareasProvider = ({children}) => {
         const res = await listarTareasRequest() 
             setTareas(res.data);
         };
-      
+             
+        const cargarTarea = async (id, tarea) => {
+            const res = await listarTareaRequest(id, tarea);
+            return res.data;
+        }
         const crearTarea = async (tarea) => {
             try {
                 const res = await crearTareaRequest(tarea);
@@ -40,14 +44,26 @@ export const TareasProvider = ({children}) => {
                 setTareas(tareas.filter((tarea) => tarea.id !== id))
             }
         }
-
-
+       
+        const editarTarea = async (id,tarea) => {
+            try {
+                const res = await actualizarTareaRequest(id, tarea);
+                return res.data;
+            } catch (error) {
+                if(error.response){
+                setError([error.response.data.message]);
+                }
+            }
+        }
  return (
     <TareasContext.Provider value={{
         tareas, 
         listarTareas,
         eliminarTarea,
         crearTarea,
+        cargarTarea,
+        errors,
+        editarTarea,
     }}>
         {children}
     </TareasContext.Provider>
